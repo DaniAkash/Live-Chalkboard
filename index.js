@@ -12,13 +12,9 @@ app.get('/', (req,res) => {
 var count = 0;
 
 io.on('connection', function(socket){
-	console.log('a user connected');
     count++;
-    console.log(count);
 	socket.on('disconnect', function(){
-		console.log('user disconnected');
         count--;
-        console.log(count);
 	});
     socket.on('new connection', function(uniqueId){
         io.emit('confirmNewConnection', [uniqueId,count]);
