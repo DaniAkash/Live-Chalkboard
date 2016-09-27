@@ -16,7 +16,7 @@ socket.on('confirmNewConnection', function(data){
     if(data[0] == myUniqueId && data[1] > 5) {
         socket.disconnect();
         alert('Sorry this server is already busy with lots of requests!! Please try again after some time :(');
-        window.location = "https://www.github.com/DaniAkash";
+        window.location = "https://github.com/DaniAkash/Live-Chalkboard";
     }
 });
 </script>

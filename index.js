@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 
 app.use(express.static('public'));
 
-app.get('/', (req,res) => {
+app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
 
@@ -30,6 +30,6 @@ io.on('connection', function(socket){
     });
 });
 
-http.listen(3000, () => {
+http.listen(3000, function(){
 	console.log('listening on *:3000');
 });
