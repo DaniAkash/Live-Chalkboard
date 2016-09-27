@@ -20,6 +20,9 @@ io.on('connection', function(socket){
         count--;
         console.log(count);
 	});
+    socket.on('new connection', function(uniqueId){
+        io.emit('confirmNewConnection', [uniqueId,count]);
+    });
 	socket.on('chat message', function(msg){
 		io.emit('chat message', msg);
 	});

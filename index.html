@@ -8,6 +8,17 @@
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
 var socket = io();
+var time = Date.now();
+var random = Math.random().toString(36).substring(7);
+var myUniqueId = time + ' ' + random;
+socket.emit('new connection', myUniqueId);
+socket.on('confirmNewConnection', function(data){
+    if(data[0] == myUniqueId && data[1] > 5) {
+        socket.disconnect();
+        alert('Sorry this server is already busy with lots of requests!! Please try again after some time :(');
+        window.location = "https://www.github.com/DaniAkash";
+    }
+});
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="js/chalk.js"></script>
