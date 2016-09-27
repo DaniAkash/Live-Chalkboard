@@ -9,10 +9,16 @@ app.get('/', (req,res) => {
 	res.sendFile(__dirname + '/index.html');
 });
 
+var count = 0;
+
 io.on('connection', function(socket){
 	console.log('a user connected');
+    count++;
+    console.log(count);
 	socket.on('disconnect', function(){
 		console.log('user disconnected');
+        count--;
+        console.log(count);
 	});
 	socket.on('chat message', function(msg){
 		io.emit('chat message', msg);
